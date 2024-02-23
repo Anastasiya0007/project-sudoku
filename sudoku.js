@@ -1,14 +1,16 @@
 const fs = require('fs');
 
 function read(num) {
-  const readed = fs.readFileSync("./puzzles.txt", "utf8").split('\n')[num].trim().split('');
+  const readed = fs.readFileSync('./puzzles.txt', 'utf8').split('\n')[num].trim().split('');
   const sudo = [];
-  for (let i = 0; i < 9; i++) {
-    sudo.push(readed.splice(0,9))
+  for (let i = 0; i < 9; i += 1) {
+    sudo.push(readed.splice(0, 9));
   }
   return sudo;
 }
-console.table(read(5))
+console.table(read(0));
+
+
 // function solve() {
 //   /**
 //    * Принимает игровое поле в том формате, в котором его вернули из функции read.
@@ -30,5 +32,3 @@ console.table(read(5))
 //    * Подумай, как симпатичнее его вывести.
 //    */
 // }
-
-
