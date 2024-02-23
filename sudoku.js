@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-function read(num) {
+function read(num) { //num - индекс строки из текстового файла puzzles.txt
   const readed = fs.readFileSync("./puzzles.txt", "utf8").split('\n')[num].trim().split('');
   const sudo = [];
   for (let i = 0; i < 9; i++) {
