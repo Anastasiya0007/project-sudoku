@@ -9,23 +9,21 @@ function read(num) { // num - индекс строки из текстовог�
   return sudo;
 }
 
-const board = read(0);
-
 function solve(board) {
   function isValid(row, col, num) {
     for (let i = 0; i < 9; i += 1) {
-      if (parseInt(board[row][i]) === num) {
+      if (parseInt(board[row][i]) === num) { // ищем совпадения в строке
         return false;
       }
     }
 
     for (let i = 0; i < 9; i += 1) {
-      if (parseInt(board[i][col]) === num) {
+      if (parseInt(board[i][col]) === num) { // ищем совпадение в столбце
         return false;
       }
     }
 
-    const startRow = Math.floor(row / 3) * 3;
+    const startRow = Math.floor(row / 3) * 3; // выделяем квадрат и ищем совпадения
     const startCol = Math.floor(col / 3) * 3;
     for (let i = 0; i < 3; i += 1) {
       for (let j = 0; j < 3; j += 1) {
@@ -38,12 +36,12 @@ function solve(board) {
     return true;
   }
 
-  for (let i = 0; i < 9; i += 1) {
-    for (let j = 0; j < 9; j += 1) {
+  for (let i = 0; i < 9; i += 1) { // проходимся по строкам
+    for (let j = 0; j < 9; j += 1) { // ищем элемент внутри строки, который будет равен пустому значению
       if (board[i][j] === '-') {
-        for (let num = 1; num <= 9; num += 1) {
-          if (isValid(i, j, num)) {
-            board[i][j] = num.toString();
+        for (let num = 1; num <= 9; num += 1) { // перебираем числа
+          if (isValid(i, j, num)) { // мы обращаемся к функции, которая проверяет строку, колонку и квадрат
+            board[i][j] = num.toString(); // если везде false, то он на строку [i] на место с элемента [j] кладет число
             if (solve(board)) {
               return true;
             }
@@ -57,9 +55,4 @@ function solve(board) {
   return board;
 }
 
-solve(board);
-console.table(solve(board));
-
-// module.exports = { read, solve };
-
-module.exports = { read };
+module.exports = { read, solve };

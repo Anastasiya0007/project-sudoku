@@ -1,6 +1,5 @@
-// Используйте для решения судоку необходимые функции из файла sudoku.js
-const { read, solve} = require('./sudoku');
+const { read, solve } = require('./sudoku');
 
-
-console.table(solve(())
-// console.table(solve(read(process.argv[2])));
+const board = read(process.argv[2]);
+solve(board);
+console.table(board);
